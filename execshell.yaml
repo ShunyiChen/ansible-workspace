@@ -1,0 +1,43 @@
+
+# command1: ansible-playbook main.yaml  
+# command2:   export ANSIBLE_CONFIG=ansible.cfg
+#             ansible-playbook main.yaml  
+
+- name: file module
+  hosts: all
+  gather_facts: no
+  become: yes
+
+  tasks:
+    # - name: ping remote connection
+    #   ping: 
+
+    # - name: ping remote connection
+    #   ping: 
+
+    # - name: create remote folder
+    #   file:
+    #     path: /usr/shunyi/cc
+    #     state: directory
+    #     mode: '777'
+    # - name: copy file from local to remote
+    #   copy:
+    #     src: /usr/shunyi/ansible-test/test.txt
+    #     dest: /usr/shunyi/cc/test.txt
+    #     backup: yes
+    # - name: debugging
+    #   debug: 
+    #     msg: "ansible_user={{param1}}. ansible_password={{param1}}"
+  # You can also use the 'cmd' parameter instead of free form format.
+    - name: Execute the command in remote shell; stdout goes to the specified file on the remote.
+      shell: sh script.sh
+      args:
+        chdir: /usr/shunyi/ansible-test/
+
+    # - name: print facts
+    #   debug:
+    #     msg: "{{ansible_python_version}}"
+      
+
+
+

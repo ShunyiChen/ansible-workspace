@@ -1,0 +1,30 @@
+
+
+# command1: ansible-playbook main.yaml  
+# command2:   export ANSIBLE_CONFIG=ansible.cfg
+#             ansible-playbook main.yaml  
+
+- name: play-test
+  hosts: all
+  gather_facts: no
+  become: yes
+
+  tasks:
+    - name: cccdd
+      ping: 
+         
+    # - name: create remote folder
+    #   file:
+    #     path: /usr/shunyi/ansible-test
+    #     state: directory
+    #     mode: '0755'
+
+    # - name: copy file from local to remote
+    #   copy:
+    #     src: /usr/shunyi/ansible-test/test2.txt
+    #     dest: /usr/shunyi/ansible-test/test2.txt
+    #     backup: yes
+
+    - name: debugging
+      debug: 
+        msg: "ansible_user={{ansible_user}}. ansible_password={{ansible_password}}"

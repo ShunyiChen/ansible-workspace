@@ -1,0 +1,19 @@
+
+# command1: ansible-playbook main.yaml  
+# command2:   export ANSIBLE_CONFIG=ansible.cfg
+#             ansible-playbook main.yaml  
+
+- name: file module
+  hosts: all
+  gather_facts: no
+  become: yes
+
+  tasks:
+    # - name: ping remote connection
+    #   ping: 
+
+    - name: test yum module
+      yum: 
+        name: git
+        state: absent
+ 

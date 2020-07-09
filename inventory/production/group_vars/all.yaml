@@ -1,0 +1,3 @@
+ansible_user: root
+ansible_password: cDe3@wsx
+ansible_connection: ssh

@@ -1,0 +1,33 @@
+
+# command1: ansible-playbook main.yaml  
+# command2:   export ANSIBLE_CONFIG=ansible.cfg
+#             ansible-playbook main.yaml  
+
+- name: file module
+  hosts: all
+  gather_facts: no
+  become: yes
+
+  tasks:
+    # - name: ping remote connection
+    #   ping: 
+    - name: create remote folder
+      file:
+        path: /usr/shunyi/ansible-test
+        state: directory
+        mode: '777'
+
+    - name: copy file from local to remote
+      copy:
+        src: /usr/shunyi/ansible-test/test.txt
+        dest: /usr/shunyi/ansible-test/test.txt
+        backup: yes
+
+    - name: test templete
+      template: 
+        src: inventory/test/templates/test.j2
+        dest: /usr/shunyi/ansible-test/test.cfg
+
+    # - name: debugging
+    #   debug: 
+    #     msg: "ansible_user={{param1}}. ansible_password={{param1}}"

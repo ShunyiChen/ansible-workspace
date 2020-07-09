@@ -1,0 +1,38 @@
+
+# command1: ansible-playbook main.yaml  
+# command2:   export ANSIBLE_CONFIG=ansible.cfg
+#             ansible-playbook main.yaml  
+
+- name: file module
+  hosts: all
+  gather_facts: no
+  become: yes
+
+  tasks:
+    # - name: ping remote connection
+    #   ping: 
+
+     #用ansible all -m shell -a "more /etc/group"去
+    - name: create group
+      group: 
+        name: ansible_demo
+        state: present
+ 
+    - name: delete group
+      group: 
+        name: ansible_demo
+        state: absent
+ 
+
+  #用ansible all -m shell -a "more /etc/passwd"去
+    - name: create user
+      user: 
+        name: demo
+        password: "{{'demo' | password_hash('sha512')}}"  ##密码必须hashed
+
+    - name: delete user
+      user: 
+        name: demo
+        state: absent
+        remove: yes  ##删除目录/home/demo
+

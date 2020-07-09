@@ -1,0 +1,7 @@
+# ansible_user: root
+# ansible_password: cDe3@wsx
+# ansible_connection: ssh
+
+http_port: 80
+host_prefix: test1-
+ip_prefix: 192.168.3.

@@ -1,0 +1,3 @@
+[all]
+ansible-node[2:3]
+ 
